@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JANTA HOTEL</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+
+        section {
+            padding: 20px;
+            text-align: center;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #333;
+            color: white;
+        }
+
+        input[type="number"] {
+            width: 60px;
+        }
+
+        button {
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            position: absolute;
+            top: 10px;
+            right: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>JANTA HOTEL</h1>
+    </header>
+
+    <section>
+        <h2>Product List</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Price (INR)</th>
+                    <th>Quantity</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Cold Drink</td>
+                    <td>&#8377; 10.00</td>
+                    <td><input type="number" id="quantityColdDrink" value="0" min="0"></td>
+                    <td id="totalColdDrink">0.00</td>
+                </tr>
+                <tr>
+                    <td>Ice Cream</td>
+                    <td>&#8377; 40.00</td>
+                    <td><input type="number" id="quantityIceCream" value="0" min="0"></td>
+                    <td id="totalIceCream">0.00</td>
+                </tr>
+                <tr>
+                    <td>Chapati (Butter)</td>
+                    <td>&#8377; 15.00</td>
+                    <td><input type="number" id="quantityChapatiButter" value="0" min="0"></td>
+                    <td id="totalChapatiButter">0.00</td>
+                </tr>
+                <tr>
+                    <td>Dal Makhni</td>
+                    <td>&#8377; 130.00</td>
+                    <td><input type="number" id="quantityDalMakhni" value="0" min="0"></td>
+                    <td id="totalDalMakhni">0.00</td>
+                </tr>
+                <tr>
+                    <td>Dahi</td>
+                    <td>&#8377; 30.00</td>
+                    <td><input type="number" id="quantityDahi" value="0" min="0"></td>
+                    <td id="totalDahi">0.00</td>
+                </tr>
+                <tr>
+                    <td>Kadai Paneer</td>
+                    <td>&#8377; 220.00</td>
+                    <td><input type="number" id="quantityKadaiPaneer" value="0" min="0"></td>
+                    <td id="totalKadaiPaneer">0.00</td>
+                </tr>
+                <tr>
+                    <td>Kurkure</td>
+                    <td>&#8377; 20.00</td>
+                    <td><input type="number" id="quantityKurkure" value="0" min="0"></td>
+                    <td id="totalKurkure">0.00</td>
+                </tr>
+                <tr>
+                    <td>Chips</td>
+                    <td>&#8377; 15.00</td>
+                    <td><input type="number" id="quantityChips" value="0" min="0"></td>
+                    <td id="totalChips">0.00</td>
+                </tr>
+                <!-- Add more products as needed -->
+            </tbody>
+        </table>
+
+        <h3>Total Amount: &#8377;<span id="totalAmount">0.00</span></h3>
+
+        <button onclick="calculateTotal()">Calculate Total</button>
+    </section>
+
+    <footer>
+        <p>&copy; 2023 JANTA HOTEL</p>
+    </footer>
+
+    <script>
+        function calculateTotal() {
+            const prices = {
+                coldDrink: 10.00,
+                iceCream: 40.00,
+                chapatiButter: 15.00,
+                dalMakhni: 130.00,
+                dahi: 30.00,
+                kadaiPaneer: 220.00,
+                kurkure: 20.00,
+                chips: 15.00,
+                // Add more products with their prices
+            };
+
+            let totalAmount = 0;
+
+            for (const product in prices) {
+                const quantity = parseInt(document.getElementById(`quantity${product.charAt(0).toUpperCase() + product.slice(1)}`).value);
+                const total = (quantity * prices[product]).toFixed(2);
+
+                document.getElementById(`total${product.charAt(0).toUpperCase() + product.slice(1)}`).textContent = total;
+                totalAmount += parseFloat(total);
+            }
+
+            document.getElementById('totalAmount').textContent = totalAmount.toFixed(2);
+        }
+    </script>
+
+</body>
+</html>
